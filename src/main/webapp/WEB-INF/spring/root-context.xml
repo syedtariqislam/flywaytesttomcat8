@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jee="http://www.springframework.org/schema/jee"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.2.xsd">
+
+	<bean id="csrfFilter" class="org.springframework.security.web.csrf.CsrfFilter">
+		<constructor-arg>
+			<bean class="org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository"/>
+		</constructor-arg>
+	</bean>
+
+	<bean id="requestDataValueProcessor" class="org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor"/>
+
+	<bean id="ds" class="com.workforcesoftware.clockmanagement.sql.WrapperDataSource">
+	  <property name="wrappedDataSource" ref="dsInternal" />
+	  <property name="flyway" ref="flyway" />
+   </bean>
+
+	<bean id="flyway" class="org.flywaydb.core.Flyway">
+      <property name="dataSource" ref="dsInternal" />
+     <property name="locations" value="com.workforcesoftware.clockmanagement.schema"/>
+	</bean>
+
+	<jee:jndi-lookup id="dsInternal" jndi-name="java:/comp/env/db" expected-type="javax.sql.DataSource"/>
+
+</beans>

@@ -1,0 +1,17 @@
+<Context docBase="@docBase@" unpackWAR="false">
+  <Resource type="javax.sql.DataSource"
+            name="db"
+            driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            url="jdbc:sqlserver://172.16.208.135:1433;DatabaseName=clockmanager"
+            username="sa"
+            password="P@ssw0rd"
+            defaultAutoCommit="false"
+            defaultTransactionIsolation="READ_COMMITTED"
+            maxIdle="10"
+            maxTotal="30"
+            validationQuery="select 1"
+            testOnBorrow="true"
+            initialSize="0"
+  />
+
+</Context>

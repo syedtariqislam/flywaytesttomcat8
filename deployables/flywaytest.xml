@@ -1,0 +1,17 @@
+<Context docBase="Fill it to point to war as an absolute path" unpackWAR="false">
+  <Resource type="javax.sql.DataSource"
+            name="db"
+            driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            url="Fill it"
+            username="Fill it"
+            password="Fill it"
+            defaultAutoCommit="false"
+            defaultTransactionIsolation="READ_COMMITTED"
+            maxIdle="10"
+            maxTotal="30"
+            validationQuery="select 1"
+            testOnBorrow="true"
+            initialSize="0"
+  />
+
+</Context>
